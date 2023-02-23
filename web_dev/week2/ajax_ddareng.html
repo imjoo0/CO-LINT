@@ -22,6 +22,11 @@
             padding: 10px;
             border: 1px solid;
         }
+
+        .urgent {
+            color: red;
+            font-weight: bold;
+        }
     </style>
 
     <script>
@@ -37,11 +42,20 @@
                         let rack_name = rows[i]['stationName'];
                         let rack_cnt = rows[i]['rackTotCnt'];
                         let bike_cnt = rows[i]['parkingBikeTotCnt'];
-                        let temp_html = `<tr>
-                                            <td>${rack_name}</td>
-                                            <td>${rack_cnt}</td>
-                                            <td>${bike_cnt}</td>
-                                        </tr>`
+                        let temp_html = '';
+                        if (bike_cnt < 5) {
+                            temp_html = `<tr class="urgent">
+                                <td>${rack_name}</td>
+                                <td>${rack_cnt}</td>
+                                <td>${bike_cnt}</td>
+                              </tr>`
+                        } else {
+                            temp_html = `<tr>
+                                <td>${rack_name}</td>
+                                <td>${rack_cnt}</td>
+                                <td>${bike_cnt}</td>
+                              </tr>`
+                        }
                         $('#names-q1').append(temp_html);
                     }
                 }
@@ -52,7 +66,7 @@
 </head>
 
 <body>
-    <h1>jQuery +Ajax의 조합을 연습하자!</h1>
+    <h1>jQuery+Ajax의 조합을 연습하자!</h1>
 
     <hr />
 
