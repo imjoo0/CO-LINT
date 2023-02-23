@@ -12,7 +12,7 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
 
-    <title>CO:LINT 피디아</title>
+    <title>코린트 피디아</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 
@@ -70,6 +70,8 @@
             margin: 20px auto 0px auto;
             padding: 20px;
             box-shadow: 0px 0px 3px 0px gray;
+
+            display: none;
         }
 
         .mybtns {
@@ -84,17 +86,25 @@
             margin-right: 10px;
         }
     </style>
+    <script>
+        function open_box(){
+            $('#post-box').show()
+        }
+        function close_box(){
+            $('#post-box').hide()
+        }
+    </script>
 </head>
 
 <body>
 <div class="mytitle">
     <h1>내 생애 최고의 영화들</h1>
-    <button>영화 기록하기</button>
+    <button onclick="open_box()">영화 기록하기</button>
 </div>
-<div class="mypost">
+<div class="mypost" id="post-box">
     <div class="form-floating mb-3">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">영화URL</label>
+        <input id="url" type="email" class="form-control" placeholder="name@example.com">
+        <label>영화URL</label>
     </div>
     <div class="input-group mb-3">
         <label class="input-group-text" for="inputGroupSelect01">별점</label>
@@ -108,17 +118,17 @@
         </select>
     </div>
     <div class="form-floating">
-        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+        <textarea id="comment" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
                   style="height: 100px"></textarea>
         <label for="floatingTextarea2">코멘트</label>
     </div>
     <div class="mybtns">
         <button type="button" class="btn btn-dark">기록하기</button>
-        <button type="button" class="btn btn-outline-dark">닫기</button>
+        <button onclick="close_box()" type="button" class="btn btn-outline-dark">닫기</button>
     </div>
 </div>
 <div class="mycards">
-    <div class="row row-cols-1 row-cols-md-4 g-4">
+    <div class="row row-cols-1 row-cols-md-4 g-4" id="cards-box">
         <div class="col">
             <div class="card h-100">
                 <img src="https://movie-phinf.pstatic.net/20210728_221/1627440327667GyoYj_JPEG/movie_image.jpg"
